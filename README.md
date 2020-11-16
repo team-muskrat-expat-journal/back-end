@@ -19,5 +19,6 @@ GET - /api/journal - gets endpoint with dummy journal entry data
 GET - /api/journal/test - gets test endpoint form journal route
 
 
-Full Postmand documentation (should be continuously updating):
+### Full Postman documentation (should be continuously updating):
+
 https://documenter.getpostman.com/view/12775150/TVepAU9V
