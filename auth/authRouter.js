@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs')
 const router = require('express').Router()
 
 const Users = require('../users/userModels')
+const Journal = require('../journal/journalModels')
 
 const {isValid} = require('../users/userService')
 const {jwtSecret} = require('./secret')
