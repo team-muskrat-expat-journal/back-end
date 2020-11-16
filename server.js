@@ -17,4 +17,8 @@ server.use(express.json())
 server.use('/api/auth', authRouter)
 server.use('/api/journal', journalRouter)
 
+server.get('/', (req,res)=>{ 
+    res.status(200).json({message: "theres gold in them hills and skrat in them swamps (e.g., the api is running)"})
+ })
+
 module.exports = server
