@@ -5,6 +5,9 @@ module.exports = {
     find,
     findBy,
     create,
+    getAllUsers,
+    updateUser,
+    removeUser,
 }
 
     //functions:
@@ -20,4 +23,16 @@ module.exports = {
         const [id] = await
         db('users').insert(user)
             return db('users').where({id}).first()
+    }
+
+    function getAllUsers(){
+        return null
+    }
+
+    function updateUser(){
+        return null
+    }
+
+    function removeUser(){
+        return null
     }
