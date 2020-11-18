@@ -9,7 +9,6 @@ exports.up = function(knex) {
     })
     .createTable("journal", (tbl) => {
       tbl.increments("id");
-      tbl.boolean("viewable").defaultTo(false);
       tbl
         .integer("user_id")
         .unsigned()
@@ -22,6 +21,8 @@ exports.up = function(knex) {
       tbl.text("location");
       tbl.text("date");
       tbl.text("notes");
+      tbl.string("category", 128)
+      tbl.string("imageUrl", 500).notNullable()
     });
   };
   
