@@ -12,6 +12,18 @@ POST - /api/auth/register - post new registration (username === email ; password
 
 POST - /api/auth/login - post login (returns Authorization Header)
 
+## Users:
+
+GET - /api/users - gets all user profiles
+
+GET - /api/users/:id - gets a user profile of user with ':id'
+
+GET - /api/users/:id/posts - [NOT OPERATIONAL YET] gets all user #:id's posts 
+
+PUT - /api/users/:id - updates user #:id's user profile
+
+DELETE - /api/users/:id - deletes user #:id's user profile
+
 ## Journal:
 
 GET - /api/journal - gets endpoint with dummy journal entry data
