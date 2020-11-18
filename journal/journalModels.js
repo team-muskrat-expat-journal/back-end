@@ -20,7 +20,7 @@ module.exports = {
         return db('journal').where({ id })
     }
     function getPostsByUserID(userID){
-        return db('journal').where({ user_id: postID})
+        return db('journal').where({ user_id: userID})
     }
 
     // POST Requests
