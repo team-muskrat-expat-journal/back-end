@@ -40,8 +40,97 @@ router.get('/test', (req, res) => {
     res.status(202).json({message: 'the journal router is running at ' + currentTime})
 })
 
-router.get('/', (req,res)=>{ 
-    res.status(200).json(jEntry)
- })
+// router.get('/', (req,res)=>{ 
+//     res.status(200).json(jEntry)
+//  })
 
+ router.get("/posts", (req, res) => {
+	Journal.getAllPosts()
+		.then((journal) => {
+			res.status(201).json({ data: journal });
+		})
+		.catch((err) => {
+			res.status(404).json({ message: "cannot find list of users" });
+		});
+}); 
+router.get("/post/:id", (req, res) => {
+	const id = req.params.id;
+
+	Journal.getPostByID(id)
+		.then((journal) => {
+			res.status(201).json({ data: journal });
+		})
+		.catch((err) => {
+			res.status(404).json({ message: "cannot find list of users" });
+		});
+}); 
+router.get("/user/:id/posts", (req, res) => {
+	const id = req.params.id;
+
+	Journal.getPostsByUserID(id)
+		.then((journal) => {
+			if (journal.length === 0) {
+				res.status(404).json({ message: "This user does not have any posts!" });
+			} else {
+				res.status(201).json(journal);
+			}
+		})
+		.catch((error) => {
+			res.status(404).json({ message: "Could not find the User of specified ID" });
+		});
+}); 
+
+
+// POST Requests
+
+router.post("/posts", (req, res) => {
+	let newPost = req.body;
+
+	Journal.addPost(newPost)
+		.then((journal) => {
+			res.status(201).json(journal);
+		})
+		.catch((error) => {
+			res.status(500).json({ message: error.message });
+		});
+});
+
+// PUT Request
+
+router.put("/post/:id", (req, res) => {
+	const { id } = req.params;
+	const changes = req.body;
+
+	Journal.getPostByID(id)
+		.then((journal) => {
+			if (journal) {
+				Journal.updatePost(id, changes).then((updatedPost) => {
+					res.json(updatedPost);
+				});
+			} else {
+				res.status(404).json({ message: "Could not find the post of that ID" });
+			}
+		})
+		.catch((error) => {
+			res.status(500).json({ message: error.message });
+		});
+});
+
+// DELETE Request
+
+router.delete("/post/:id", (req, res) => {
+	const { id } = req.params;
+
+	Journal.deletePost(id)
+		.then((deleted) => {
+			if (deleted) {
+				res.json({ removed: deleted });
+			} else {
+				res.status(404).json({ message: "Could not find post with given ID" });
+			}
+		})
+		.catch((error) => {
+			res.status(500).json({ message: "Failed to delete question" });
+		});
+});
 module.exports = router
