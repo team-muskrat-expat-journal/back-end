@@ -26,12 +26,13 @@ router.post('/register', async (req,res)=>{
         const hash = bcrypt.hashSync(credentials.password, rounds)
 
         credentials.password = hash
-
+        console.log("creds:", credentials)
         Users.create(credentials)
         .then(user => {
+            console.log("user", user)
             res.status(201).json({data:user})
         })
-        .catch(error => res.status(500).json({message: `${error.message}; ${error.stack}`}))
+        .catch(error => res.status(500).json({message: error.message, extra: error.stack}))
     } else {
         res.status(400).json({
           message: "provide alphanumeric username and password"
@@ -40,14 +41,14 @@ router.post('/register', async (req,res)=>{
 })
 
 router.post('/login', (req,res)=>{ 
-    const {username, password} = req.body
+    const {email, password} = req.body
 
     if(isValid(req.body)) {
-        Users.findBy({username})
+        Users.findBy({email})
         .then(([user])=>{
             if(user && bcrypt.compareSync(password, user.password)){
                 const token = makeToken(user)
-                res.status(200).json({message: `welcome ${user.username}`, token})
+                res.status(200).json({message: `welcome ${user.email}`, token})
             } else {
                 res.status(401).json({message: 'invalid credentials'})
             }
@@ -63,7 +64,7 @@ router.post('/login', (req,res)=>{
 function makeToken(user){
     const payload = {
         subject: user.id,
-        username: user.username
+        email: user.email
     }
     const options = {
         expiresIn: '1 hour'
