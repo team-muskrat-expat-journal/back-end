@@ -26,9 +26,19 @@ DELETE - /api/users/:id - deletes user #:id's user profile
 
 ## Journal:
 
-GET - /api/journal - gets endpoint with dummy journal entry data
+<!-- GET - /api/journal - gets endpoint with dummy journal entry data
 
-GET - /api/journal/test - gets test endpoint form journal route
+GET - /api/journal/test - gets test endpoint form journal route -->
+
+GET - /api/posts - gets all posts
+
+GET - /api/posts/:id - gets a post with ':id'
+
+GET - /api/user/:id/posts - 
+
+PUT - /api/post/:id - updates user #:id's user profile
+
+DELETE - /api/post/:id - deletes post with given :id
 
 
 ### Full Postman documentation (should be continuously updating):

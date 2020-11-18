@@ -40,9 +40,9 @@ router.get('/test', (req, res) => {
     res.status(202).json({message: 'the journal router is running at ' + currentTime})
 })
 
-// router.get('/', (req,res)=>{ 
-//     res.status(200).json(jEntry)
-//  })
+router.get('/', (req,res)=>{ 
+    res.status(200).json(jEntry)
+ })
 
  router.get("/posts", (req, res) => {
 	Journal.getAllPosts()
