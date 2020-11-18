@@ -18,7 +18,9 @@ GET - /api/users - gets all user profiles
 
 GET - /api/users/:id - gets a user profile of user with ':id'
 
+
 GET - /api/users/:id/posts - [NOT OPERATIONAL YET] gets all user #:id's posts
+
 
 PUT - /api/users/:id - updates user #:id's user profile
 
