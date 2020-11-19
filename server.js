@@ -15,6 +15,10 @@ server.use(morgan('dev'))
 server.use(cors())
 server.use(express.json())
 
+server.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*')
+    next()
+})
 server.use('/api/auth', authRouter)
 server.use('/api/journal', journalRouter)
 server.use('/api/users', userRouter)
