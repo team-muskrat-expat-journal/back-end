@@ -2,8 +2,6 @@ const router = require('express').Router()
 
 const Journal = require('./journalModels')
 
-const noCors = require('./journalService')
-
 let jEntry = [
     {
         title: "muskrat stew festival",
@@ -100,7 +98,7 @@ router.post("/posts", (req, res) => {
 
 // PUT Request
 
-router.put("/posts/:id", noCors, (req, res) => {
+router.put("/posts/:id", (req, res) => {
 	const { id } = req.params;
 	const changes = req.body;
 
