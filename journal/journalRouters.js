@@ -84,7 +84,7 @@ router.get("/user/:id/posts", (req, res) => {
 
 // POST Requests
 
-router.post("/users/:id/posts", (req, res) => {
+router.post("/posts", (req, res) => {
 	let newPost = req.body;
 
 	Journal.addPost(newPost)
