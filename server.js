@@ -10,9 +10,9 @@ const userRouter = require('./users/userRouters')
 
 const server = express()
 
+server.use(cors())
 server.use(helmet())
 server.use(morgan('dev'))
-server.use(cors())
 server.use(express.json())
 
 server.use('/api/auth', authRouter)
