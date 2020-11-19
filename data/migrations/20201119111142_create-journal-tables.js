@@ -16,13 +16,13 @@ exports.up = function(knex) {
         .references("users.id")
         .onDelete("CASCADE")
         .onUpdate("CASCADE");
-      tbl.text("title").notNullable();
+      tbl.text("tripname").notNullable();
       tbl.integer("rating").notNullable();
       tbl.text("location");
       tbl.text("date");
       tbl.text("notes");
-      tbl.string("category", 128)
-      tbl.string("imageUrl", 500).notNullable()
+      tbl.string("role", 128)
+      tbl.string("imageURL", 500).notNullable()
     });
   };
   
