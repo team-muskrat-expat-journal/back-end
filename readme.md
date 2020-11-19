@@ -45,3 +45,4 @@ DELETE - /api/post/:id - deletes post with given :id
 ### Full Postman documentation (should be continuously updating):
 
 https://documenter.getpostman.com/view/12775150/TVepAU9V
+
