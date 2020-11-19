@@ -25,7 +25,7 @@ module.exports = {
     
     async function create(user){
         const [id] = await 
-        db('users').insert(user, "id")
+        db('users').insert(user)
             return db('users').where({id}).first()
     }
 
