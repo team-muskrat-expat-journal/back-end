@@ -41,19 +41,20 @@ router.get('/test', (req, res) => {
 })
 
 router.get('/', (req,res)=>{ 
+	
     res.status(200).json(jEntry)
  })
 
  router.get("/posts", (req, res) => {
 	Journal.getAllPosts()
 		.then((journal) => {
-			res.status(201).json({ data: journal });
+			res.status(201).json({ journal });
 		})
 		.catch((err) => {
 			res.status(404).json({ message: "cannot find list of users" });
 		});
 }); 
-router.get("/post/:id", (req, res) => {
+router.get("/posts/:id", (req, res) => {
 	const id = req.params.id;
 
 	Journal.getPostByID(id)
@@ -97,7 +98,7 @@ router.post("/posts", (req, res) => {
 
 // PUT Request
 
-router.put("/post/:id", (req, res) => {
+router.put("/posts/:id", (req, res) => {
 	const { id } = req.params;
 	const changes = req.body;
 
@@ -118,7 +119,7 @@ router.put("/post/:id", (req, res) => {
 
 // DELETE Request
 
-router.delete("/post/:id", (req, res) => {
+router.delete("/posts/:id", (req, res) => {
 	const { id } = req.params;
 
 	Journal.deletePost(id)

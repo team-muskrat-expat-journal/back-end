@@ -47,8 +47,8 @@ router.put('/:id', (req,res)=>{
         } else {
             res.status(404).json({ message: `could not find user #${id}`})
         }
-    }).then(updatedScheme => {
-        res.json(updatedScheme)
+    }).then(updatedUser => {
+        res.json(updatedUser)
     })
     .catch(error => res.status(500).json({message: `${error.message}; ${error.stack}`}))
 
