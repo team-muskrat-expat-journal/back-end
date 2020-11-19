@@ -40,10 +40,20 @@ router.get('/test', (req, res) => {
     res.status(202).json({message: 'the journal router is running at ' + currentTime})
 })
 
-router.get('/', (req,res)=>{ 
+// router.get('/', (req,res)=>{ 
 	
-    res.status(200).json(jEntry)
- })
+//     res.status(200).json(jEntry)
+//  })
+
+ 
+ router.get("/", (req, res) => {
+    res.setHeader("Access-Control-Allow-Origin", "*")
+    res.setHeader("Access-Control-Allow-Credentials", "true");
+    res.setHeader("Access-Control-Max-Age", "1800");
+    res.setHeader("Access-Control-Allow-Headers", "content-type");
+    res.setHeader( "Access-Control-Allow-Methods", "PUT, POST, GET, DELETE, PATCH, OPTIONS" ); 
+     });
+
 
  router.get("/posts", (req, res) => {
 	Journal.getAllPosts()
@@ -98,7 +108,9 @@ router.post("/posts", (req, res) => {
 
 // PUT Request
 
+
 router.put("/posts/:id", (req, res) => {
+
 	const { id } = req.params;
 	const changes = req.body;
 
