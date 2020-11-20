@@ -17,12 +17,13 @@ describe('userModel.js', ()=>{
             expect(users).toHaveLength(0)
         })
         it('gets all the users', async ()=>{
-            await db('users').insert({name: 'ironic arabic t-shirt'})
+            await db('users').insert({email: 'ironic@arabic.com', password: '123456'})
             let users = await User.find()
             expect(users).toHaveLength(1)
 
-            await db('users').insert({name: 'the new calendar'})
+            await db('users').insert({email: 'the@new.cal', password: '123456'})
             users = await User.find()
             expect(users).toHaveLength(2)
         })
     })
+})
