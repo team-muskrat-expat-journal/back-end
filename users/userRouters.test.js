@@ -10,7 +10,7 @@ describe('userRouter.js', ()=>{
         it('works with supertest', ()=>{
             return request(server).get('/api/users')
                 .expect('content-type', /json/)
-                .expect('content-length', '76')
+                .expect('content-length', '153')
                 .expect(200)
         })
     })
